@@ -1,16 +1,17 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import React from "react";
+import AuthOnlyLayout from "layouts/AuthOnlyLayout";
+import { MainLayout } from "layouts/MainLayout";
 
-const AboutPage = () => (
-  <Layout title="About | Next.js + TypeScript Example">
-    <h1>About</h1>
-    <p>This is the about page</p>
-    <p>
-      <Link href="/">
-        <a>Go home</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const About = () => {
+  return <h3>About page</h3>;
+};
 
-export default AboutPage
+export default About;
+
+About.getLayout = function getLayout(page) {
+  return (
+    <AuthOnlyLayout>
+      <MainLayout>{page}</MainLayout>
+    </AuthOnlyLayout>
+  );
+};
